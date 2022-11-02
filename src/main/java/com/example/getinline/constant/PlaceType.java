@@ -1,4 +1,4 @@
-package com.example.getinline.domain.constant;
+package com.example.getinline.constant;
 
 public enum PlaceType {
     COMMON, SPORTS, RESTAURANT, PARTY
