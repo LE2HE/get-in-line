@@ -1,6 +1,6 @@
 package com.example.getinline.domain;
 
-import com.example.getinline.domain.constant.EventStatus;
+import com.example.getinline.constant.EventStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
