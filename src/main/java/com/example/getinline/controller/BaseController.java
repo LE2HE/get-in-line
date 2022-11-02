@@ -13,9 +13,4 @@ public class BaseController implements ErrorController {
         return "index";
     }
 
-    @RequestMapping("/error")
-    public String error() {
-        return "error";
-    }
-
 }

@@ -1,7 +1,7 @@
 package com.example.getinline.controller;
 
-import com.example.getinline.domain.constant.EventStatus;
-import com.example.getinline.domain.constant.PlaceType;
+import com.example.getinline.constant.EventStatus;
+import com.example.getinline.constant.PlaceType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
