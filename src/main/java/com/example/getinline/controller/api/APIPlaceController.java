@@ -3,6 +3,7 @@ package com.example.getinline.controller.api;
 import com.example.getinline.constant.PlaceType;
 import com.example.getinline.dto.APIDataResponse;
 import com.example.getinline.dto.PlaceDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,14 +24,15 @@ public class APIPlaceController {
         )));
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/places")
-    public Boolean createPlace() {
-        return true;
+    public APIDataResponse<Void> createPlace(@RequestBody PlaceDTO placeDTO) {
+        return APIDataResponse.empty();
     }
 
     @GetMapping("/places/{placeId}")
-    public APIDataResponse<PlaceDTO> getPlace(@PathVariable Integer placeId) {
-        if (placeId.equals(2)) {
+    public APIDataResponse<PlaceDTO> getPlace(@PathVariable Long placeId) {
+        if (placeId.equals(2L)) {
             return APIDataResponse.of(null);
         }
 
@@ -44,14 +46,17 @@ public class APIPlaceController {
         ));
     }
 
-    @PutMapping("/place/{placeId}")
-    public Boolean modifyPlace(@PathVariable Integer placeId) {
-        return true;
+    @PutMapping("/places/{placeId}")
+    public APIDataResponse<Void> modifyPlace(
+            @PathVariable Long placeId,
+            @RequestBody PlaceDTO placeDTO
+    ) {
+        return APIDataResponse.empty();
     }
 
     @DeleteMapping("/places/{placeId}")
-    public Boolean removePlace(@PathVariable Integer placeId) {
-        return true;
+    public APIDataResponse<Void> removePlace(@PathVariable Long placeId) {
+        return APIDataResponse.empty();
     }
 
 }
