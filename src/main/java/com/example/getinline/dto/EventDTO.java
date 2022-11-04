@@ -35,4 +35,18 @@ public record EventDTO(
                 memo
         );
     }
+
+    public static EventDTO from(EventDTO eventDTO) {
+        if (eventDTO == null) { return null; }
+        return EventDTO.of(
+                eventDTO.placeId(),
+                eventDTO.eventName(),
+                eventDTO.eventStatus(),
+                eventDTO.eventStartDatetime(),
+                eventDTO.eventEndDatetime(),
+                eventDTO.currentNumberOfPeople(),
+                eventDTO.capacity(),
+                eventDTO.memo()
+        );
+    }
 }
