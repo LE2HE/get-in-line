@@ -32,6 +32,8 @@ class EventControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("event/index"))
+                .andExpect(model().hasNoErrors())
+                .andExpect(model().attributeExists("events"))
                 .andDo(print());
     }
 
@@ -46,6 +48,8 @@ class EventControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("event/detail"))
+                .andExpect(model().hasNoErrors())
+                .andExpect(model().attributeExists("event"))
                 .andDo(print());
     }
 
