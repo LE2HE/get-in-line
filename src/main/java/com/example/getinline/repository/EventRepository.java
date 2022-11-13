@@ -1,13 +1,15 @@
 package com.example.getinline.repository;
 
 import com.example.getinline.constant.EventStatus;
+import com.example.getinline.domain.Event;
 import com.example.getinline.dto.EventDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface EventRepository {
+public interface EventRepository extends JpaRepository<Event, Long> {
     default List<EventDTO> findEvents(
             Long placeId,
             String eventName,
