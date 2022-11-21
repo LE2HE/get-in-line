@@ -1,6 +1,7 @@
 package com.example.getinline.dto;
 
 import com.example.getinline.constant.EventStatus;
+import com.example.getinline.domain.Event;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -40,6 +41,19 @@ public record EventDTO(
         );
     }
 
+    public static EventDTO of(Event event) {
+        return new EventDTO(
+                event.getPlaceId(),
+                event.getEventName(),
+                event.getEventStatus(),
+                event.getEventStartDatetime(),
+                event.getEventEndDatetime(),
+                event.getCurrentNumberOfPeople(),
+                event.getCapacity(),
+                event.getMemo()
+        );
+    }
+
     public static EventDTO from(EventDTO eventDTO) {
         if (eventDTO == null) { return null; }
         return EventDTO.of(
@@ -53,4 +67,31 @@ public record EventDTO(
                 eventDTO.memo()
         );
     }
+
+    public Event toEntity() {
+        return Event.of(
+                placeId,
+                eventName,
+                eventStatus,
+                eventStartDatetime,
+                eventEndDatetime,
+                currentNumberOfPeople,
+                capacity,
+                memo
+        );
+    }
+
+    public Event updateEntity(Event event) {
+        if (placeId != null) { event.setPlaceId(placeId); }
+        if (eventName != null) { event.setEventName(eventName); }
+        if (eventStatus != null) { event.setEventStatus(eventStatus); }
+        if (eventStartDatetime != null) { event.setEventStartDatetime(eventStartDatetime); }
+        if (eventEndDatetime != null) { event.setEventEndDatetime(eventEndDatetime); }
+        if (currentNumberOfPeople != null) { event.setCurrentNumberOfPeople(currentNumberOfPeople); }
+        if (capacity != null) { event.setCapacity(capacity); }
+        if (memo != null) { event.setMemo(memo); }
+
+        return event;
+    }
+
 }
