@@ -8,6 +8,7 @@ import com.example.getinline.repository.EventRepository;
 import com.querydsl.core.types.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +31,7 @@ public class EventService {
         }
     }
 
+    @Transactional(readOnly = true)
     public List<EventDTO> getEvents(
             Long placeId,
             String eventName,
@@ -44,6 +46,7 @@ public class EventService {
         }
     }
 
+    @Transactional(readOnly = true)
     public Optional<EventDTO> getEvent(Long eventId) {
         try {
             return eventRepository.findById(eventId).map(EventDTO::of);
@@ -52,6 +55,7 @@ public class EventService {
         }
     }
 
+    @Transactional
     public boolean createEvent(EventDTO eventDTO) {
         try {
             if (eventDTO == null) {
@@ -65,6 +69,7 @@ public class EventService {
         }
     }
 
+    @Transactional
     public boolean modifyEvent(Long eventId, EventDTO dto) {
         try {
             if (eventId == null || dto == null) {
@@ -80,6 +85,7 @@ public class EventService {
         }
     }
 
+    @Transactional
     public boolean removeEvent(Long eventId) {
         try {
             if (eventId == null) {
