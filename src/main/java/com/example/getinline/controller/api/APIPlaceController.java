@@ -15,6 +15,7 @@ public class APIPlaceController {
     @GetMapping("/places")
     public APIDataResponse<List<PlaceDTO>> getPlaces() {
         return APIDataResponse.of(List.of(PlaceDTO.of(
+                1L,
                 PlaceType.COMMON,
                 "랄라배드민턴장",
                 "서울시 강남구 강남대로 1234",
@@ -37,6 +38,7 @@ public class APIPlaceController {
         }
 
         return APIDataResponse.of(PlaceDTO.of(
+                placeId,
                 PlaceType.COMMON,
                 "랄라배드민턴장",
                 "서울시 강남구 강남대로 1234",

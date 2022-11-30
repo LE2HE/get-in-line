@@ -1,13 +1,14 @@
 package com.example.getinline.controller.api;
 
 import com.example.getinline.constant.EventStatus;
+import com.example.getinline.constant.PlaceType;
 import com.example.getinline.dto.APIDataResponse;
 import com.example.getinline.dto.EventDTO;
+import com.example.getinline.dto.PlaceDTO;
 import com.example.getinline.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,15 +33,25 @@ public class APIEventController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime eventStartDatetime,
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime eventEndDatetime
     ) {
-        List<EventDTO> response = eventService.getEvents(
-                placeId,
-                eventName,
-                eventStatus,
-                eventStartDatetime,
-                eventEndDatetime
-        ).stream().map(EventDTO::from).toList();
-
-        return APIDataResponse.of(response);
+        return APIDataResponse.of(List.of(EventDTO.of(
+                1L,
+                PlaceDTO.of(
+                        1L,
+                        PlaceType.SPORTS,
+                        "배드민턴장",
+                        "서울시 가나구 다라동",
+                        "010-1111-2222",
+                        0,
+                        null
+                ),
+                "오후 운동",
+                EventStatus.OPENED,
+                LocalDateTime.of(2021, 1, 1, 13, 0, 0),
+                LocalDateTime.of(2021, 1, 1, 16, 0, 0),
+                0,
+                24,
+                "마스크 꼭 착용하세요"
+        )));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
