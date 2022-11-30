@@ -59,6 +59,7 @@ class APIPlaceControllerTest {
     void givenPlace_whenCreatingAPlace_thenReturnsSuccessfulStandardResponse() throws Exception {
         // given
         PlaceDTO placeDTO = PlaceDTO.of(
+                1L,
                 PlaceType.COMMON,
                 "랄라배드민턴장",
                 "서울시 강남구 강남대로 1234",
@@ -123,6 +124,7 @@ class APIPlaceControllerTest {
         // given
         long placeId = 1L;
         PlaceDTO placeDTO = PlaceDTO.of(
+                placeId,
                 PlaceType.COMMON,
                 "랄라배드민턴장",
                 "서울시 강남구 강남대로 1234",
